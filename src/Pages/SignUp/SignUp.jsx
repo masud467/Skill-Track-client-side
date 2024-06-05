@@ -13,19 +13,13 @@ const SignUp = () => {
     const {
         register,
         handleSubmit,
-        
         formState: { errors },
       } = useForm()
       const onSubmit = async(data) => {
         console.log(data)
-        // const formData= new FormData()
-        // formData.append("image",data.image[0])
-        // console.log(formData)
-        const imageFile ={image:data.image[0]}
-        
-        // try{
-         
-                  
+        const imageFile ={image:data.photo[0]} 
+        console.log('imageFile',imageFile)
+        // try{    
                     // 1.upload image and get image url from imgBB
                     const result= await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,
                     imageFile,{
@@ -126,7 +120,7 @@ const SignUp = () => {
           <label className="label">
             <span className="label-text">Select Image</span>
           </label>
-          <input type="file"   {...register("image", { required: true })} name="image" accept="image/*" className="input input-bordered" required />
+          <input type="file"   {...register("photo", { required: true })} name="photo" accept="photo/*" className="input input-bordered" required />
           {errors.image && (
                   <span className="text-red-600">Photo URL is required</span>
                 )}
