@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase/firebase.confog";
+import axios from "axios";
 
 export const AuthContext = createContext()
 const auth=getAuth(app)
@@ -33,11 +34,26 @@ const AuthProvider = ({children}) => {
         })
     }
 
+    // save user in mongoDb
+    const saveUser=async user=>{
+        const currentUser={
+            email:user?.email,
+        role:"student",
+        status:'pending'
+        }
+        const {data} =await axios.put('http://localhost:6003/user',
+            currentUser
+        )
+        return data
+    }
+   
+
     // onAuthStateChange
     useEffect(()=>{
         const unsubscribe= onAuthStateChanged(auth,currentUser=>{
             setUser(currentUser)
             if(currentUser){
+                saveUser(currentUser)
                 console.log(currentUser)
             }
             setLoading(false)

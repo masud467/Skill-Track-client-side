@@ -1,4 +1,5 @@
 import Collaborators from "../../Components/Collaborators/Collaborators";
+import AsTeacher from "../../Components/Home/AsTeacher";
 import Banner from "../../Components/Home/Banner";
 
 const Home = () => {
@@ -17,6 +18,7 @@ highest review. (use slider highly recommended)
 classes,Total student enrollment in your website */}
 
 {/* 4.Create a section for teachers to join your website as a teacher */}
+<AsTeacher></AsTeacher>
 {/* 5.Added at least 2(two) extra sections on the home page relevant to the
 website. */}
     </div>

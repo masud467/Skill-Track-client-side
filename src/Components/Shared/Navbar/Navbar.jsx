@@ -20,7 +20,7 @@ const Navbar = () => {
           <a>All Classes</a>
         </li>
       </NavLink>
-      <NavLink>
+      <NavLink to="/instructor">
         <li>
           <a>Teach on SkillTrack</a>
         </li>

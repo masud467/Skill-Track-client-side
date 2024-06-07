@@ -63,6 +63,7 @@ const AddClass = () => {
         description:data.description,
         phone:data.phone,
         image:res.data.data.display_url,
+        status:'pending',
         teacher:teacher
         
       }
