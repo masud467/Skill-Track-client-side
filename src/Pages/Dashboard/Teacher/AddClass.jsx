@@ -45,7 +45,7 @@ const AddClass = () => {
       image:user?.photoURL,
       email:user?.email
     }
-    // image upload to imgbb and then get url
+    // image upload to imgBb and then get url
     const imageFile ={image:data.image[0]}
 
     

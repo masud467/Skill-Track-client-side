@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const MyClass = () => {
   const { user } = useAuth();
   const queryClient= useQueryClient()
-  // fetch classes data with tanstack query
+  // fetch classes data with tansTack query
   const {
     data:classes=[],
     isLoading,
