@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const AsTeacher = () => {
   return (
     <div className="mt-10">
@@ -9,9 +11,9 @@ const AsTeacher = () => {
         />
         <div className="card-body">
           <h2 className="card-title">Become an instructor</h2>
-          <p>Click the button to listen on Spotiwhy app.</p>
+          <p>Are you passionate about sharing your expertise? Join SkillTrack and reach a global audience of motivated students. Earn income by teaching subjects you love, with the support and resources you need to succeed. Start teaching today and become a part of our vibrant learning community. Click the button below to begin your journey with SkillTrack.</p>
           <div className="card-actions ">
-            <button className="btn btn-primary"> Start teaching today</button>
+            <Link to='/instructor'><button className="btn btn-primary"> Start teaching today</button></Link>
           </div>
         </div>
       </div>

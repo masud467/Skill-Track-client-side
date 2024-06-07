@@ -9,6 +9,7 @@ import AddClass from "../Pages/Dashboard/Teacher/AddClass";
 import MyClass from "../Pages/Dashboard/Teacher/MyClass";
 import Statistics from "../Pages/Dashboard/Public/Statistics";
 import UpdateClass from "../Pages/Dashboard/Teacher/UpdateClass";
+import Teaching from "../Pages/Teaching/Teaching";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             path:'/all-classes',
             element:<AllClasses></AllClasses>
         },
+        {
+          path:'/instructor',
+          element:<Teaching></Teaching>
+        }
       ]
       
     },
