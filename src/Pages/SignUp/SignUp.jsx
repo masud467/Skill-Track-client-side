@@ -17,30 +17,34 @@ const SignUp = () => {
       } = useForm()
       const onSubmit = async(data) => {
         console.log(data)
-        const imageFile ={image:data.photo[0]} 
-        console.log('imageFile',imageFile)
-        // try{    
+        const formData = new FormData();
+        formData.append('image', data.photo[0]);
+        console.log(formData)
+        // const imageFile ={image:data.photo[0]} 
+        // console.log('imageFile',imageFile)
+        try{    
                     // 1.upload image and get image url from imgBB
                     const result= await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,
-                    imageFile,{
+                    formData,{
                         headers:{
                             " content-type":"multipart/form-data"
                         }
                     }
                     )
                     console.log(result.data.data.display_url)
+                    const imageUrl=result.data.data.display_url
                     // register user
                     const res= await createUser(data.email,data.password)
                     console.log(res)
                     // update profile
-                    await userProfileUpdate(data.name,result.data.data.display_ur)
+                    await userProfileUpdate(data.name,imageUrl)
                     navigate('/')
                     toast.success('SignUp success.')
-                // }
-                // catch(err){
-                //     console.log(err)
-                //     toast.error(err.message)
-                // }
+                 }
+                 catch(err){
+                     console.log(err)
+                     toast.error(err.message)
+                 }
     }
 
     // handle google signin
