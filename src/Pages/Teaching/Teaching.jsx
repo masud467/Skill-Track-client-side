@@ -45,9 +45,7 @@ const Teaching = () => {
     
         // console.log(res.data)
     }
-    const handleTeacher=async()=>{
-        console.log('I want to be a teacher')
-    }
+    
     return (
         <div className="pt-20">
             <SectionTitle heading='Request as an instructor'>
@@ -163,7 +161,7 @@ const Teaching = () => {
           
          
         <div className="text-center mt-5">
-        <button onClick={handleTeacher} className="btn btn-primary">
+        <button  className="btn btn-primary">
           Submit for review 
           </button>
         </div>

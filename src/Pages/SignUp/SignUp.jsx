@@ -5,11 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { useState } from "react";
 
 
 const SignUp = () => {
-    const {createUser,userProfileUpdate, signInWithGoogle,loading}=useAuth()
+    const {createUser,userProfileUpdate, signInWithGoogle}=useAuth()
+   
     const navigate =useNavigate()
+    const [loading,setLoading]=useState(false)
     const {
         register,
         handleSubmit,
@@ -44,11 +47,14 @@ const SignUp = () => {
                  catch(err){
                      console.log(err)
                      toast.error(err.message)
+                 }finally{
+                  setLoading(false)
                  }
     }
 
     // handle google signin
   const handleGoogleSignIn = async () => {
+    setLoading(true)
     try {
       await signInWithGoogle()
 
@@ -57,6 +63,9 @@ const SignUp = () => {
     } catch (err) {
       console.log(err)
       toast.error(err.message)
+    }
+    finally{
+      setLoading(false)
     }
   }
     // const handleSignUp =async e=>{
