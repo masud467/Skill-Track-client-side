@@ -10,7 +10,6 @@ import { useState } from "react";
 
 const SignUp = () => {
     const {createUser,userProfileUpdate, signInWithGoogle}=useAuth()
-   
     const navigate =useNavigate()
     const [loading,setLoading]=useState(false)
     const {
@@ -23,8 +22,6 @@ const SignUp = () => {
         const formData = new FormData();
         formData.append('image', data.photo[0]);
         console.log(formData)
-        // const imageFile ={image:data.photo[0]} 
-        // console.log('imageFile',imageFile)
         try{    
                     // 1.upload image and get image url from imgBB
                     const result= await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,
@@ -41,6 +38,10 @@ const SignUp = () => {
                     console.log(res)
                     // update profile
                     await userProfileUpdate(data.name,imageUrl)
+                    const userPhone = {
+                      phoneNumber: data.phoneNumber
+                    };
+                    await axios.put('http://localhost:6003/user', userPhone);
                     navigate('/')
                     toast.success('SignUp success.')
                  }
@@ -111,6 +112,7 @@ const SignUp = () => {
     </div>
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+        {/* name */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Name</span>
@@ -120,6 +122,7 @@ const SignUp = () => {
                   <span className="text-red-600">Name is required</span>
                 )}
         </div>
+        {/* email */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email Address</span>
@@ -129,6 +132,25 @@ const SignUp = () => {
                   <span className="text-red-600">Email is required</span>
                 )}
         </div>
+        {/* phone number */}
+        <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Phone Number</span>
+                </label>
+                <input
+                  type="number"
+                  
+                  
+                  {...register("phoneNumber", { required: true })}
+                  name="phoneNumber"
+                  placeholder="Enter Your Phone Number"
+                  className="input input-bordered"
+                />
+                {errors.phoneNumber && (
+                  <span className="text-red-600">Phone number is required</span>
+                )}
+              </div>
+        {/* image */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Select Image</span>
@@ -138,6 +160,7 @@ const SignUp = () => {
                   <span className="text-red-600">Photo URL is required</span>
                 )}
         </div>
+        {/* password */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>

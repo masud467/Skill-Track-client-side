@@ -10,6 +10,7 @@ import MyClass from "../Pages/Dashboard/Teacher/MyClass";
 import Statistics from "../Pages/Dashboard/Public/Statistics";
 import UpdateClass from "../Pages/Dashboard/Teacher/UpdateClass";
 import Teaching from "../Pages/Teaching/Teaching";
+import Profile from "../Pages/Dashboard/Public/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
         {
           path:'update/:id',
           element:<UpdateClass></UpdateClass>
+        },
+        {
+          path:'profile',
+          element:<Profile></Profile>
         }
 
       ]
