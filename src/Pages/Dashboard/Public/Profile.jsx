@@ -1,10 +1,17 @@
 import { Helmet } from "react-helmet";
 import useAuth from "../../../hooks/useAuth";
+import useRole from "../../../hooks/useRole";
+import Loading from "../../../Components/Shared/Loading/Loading";
 
 const Profile = () => {
-    const { user } = useAuth()
+    const { user,loading } = useAuth()
+    const [role,isLoading]= useRole()
 
   console.log(user)
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+  if(loading||isLoading) return <Loading></Loading>
     return (
         <div className='flex justify-center items-center h-screen'>
         <Helmet>
@@ -13,7 +20,7 @@ const Profile = () => {
         <div className='bg-white shadow-lg rounded-2xl w-3/5'>
           <img
             alt='profile'
-            src='https://wallpapercave.com/wp/wp10784415.jpg'
+            src='https://i.ibb.co/G0w9FzH/fuji-mountain-kawaguchiko-lake-morning-autumn-seasons-fuji-mountain-yamanachi-japan.jpg'
             className='w-full mb-4 rounded-t-lg h-36'
           />
           <div className='flex flex-col items-center justify-center p-4 -mt-16'>
@@ -25,8 +32,8 @@ const Profile = () => {
               />
             </a>
   
-            <p className='p-2 px-4 text-xs text-white bg-pink-500 rounded-full'>
-              Admin
+            <p className='p-2 px-4 text-xs text-white bg-blue-500 rounded-full'>
+              {capitalizeFirstLetter(role)}
             </p>
             <p className='mt-2 text-xl font-medium text-gray-800 '>
               User Id: {user?.uid}
@@ -45,17 +52,17 @@ const Profile = () => {
                 </p>
                 <p className='flex flex-col'>
                 phone Number
-                  <span className='font-bold text-black '>{user?.phoneNumbe||''}</span>
+                  <span className='font-bold text-black '>{user?.phoneNumber||''}</span>
                 </p>
   
-                <div>
+                {/* <div>
                   <button className='bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1'>
                     Update Profile
                   </button>
                   <button className='bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]'>
                     Change Password
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
