@@ -13,6 +13,7 @@ import Teaching from "../Pages/Teaching/Teaching";
 import Profile from "../Pages/Dashboard/Public/Profile";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -50,11 +51,11 @@ export const router = createBrowserRouter([
         // common
         {
           index:true,
-          element:<Statistics></Statistics>
+          element:<PrivateRoute><Statistics></Statistics></PrivateRoute>
         },
         {
           path:'profile',
-          element:<Profile></Profile>
+          element:<PrivateRoute><Profile></Profile></PrivateRoute>
         },
         // teacher 
         {
@@ -73,7 +74,9 @@ export const router = createBrowserRouter([
         // admin
         {
           path:'all-users',
-          element:<PrivateRoute><AllUsers></AllUsers></PrivateRoute>
+          element:<PrivateRoute>
+            <AdminRoute><AllUsers></AllUsers></AdminRoute>
+          </PrivateRoute>
         }
 
       ]
