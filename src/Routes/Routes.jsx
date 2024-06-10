@@ -11,6 +11,7 @@ import Statistics from "../Pages/Dashboard/Public/Statistics";
 import UpdateClass from "../Pages/Dashboard/Teacher/UpdateClass";
 import Teaching from "../Pages/Teaching/Teaching";
 import Profile from "../Pages/Dashboard/Public/Profile";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 
 export const router = createBrowserRouter([
     {
@@ -45,11 +46,16 @@ export const router = createBrowserRouter([
       path:'/dashboard',
       element:<DashboardLayout></DashboardLayout>,
       children:[
-        // teacher 
+        // common
         {
           index:true,
           element:<Statistics></Statistics>
         },
+        {
+          path:'profile',
+          element:<Profile></Profile>
+        },
+        // teacher 
         {
           path:'add-class',
           element:<AddClass></AddClass>
@@ -62,9 +68,11 @@ export const router = createBrowserRouter([
           path:'update/:id',
           element:<UpdateClass></UpdateClass>
         },
+       
+        // admin
         {
-          path:'profile',
-          element:<Profile></Profile>
+          path:'all-users',
+          element:<AllUsers></AllUsers>
         }
 
       ]

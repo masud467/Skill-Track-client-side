@@ -3,6 +3,7 @@ import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import Loading from "../../../Components/Shared/Loading/Loading";
 
 
 
@@ -70,7 +71,7 @@ const MyClass = () => {
             
     
   
-  if(isLoading) return <div>Loading....</div>;
+  if(isLoading) return <Loading></Loading>;
 //   console.log(classes)
 
   

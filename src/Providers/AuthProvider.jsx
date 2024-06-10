@@ -38,7 +38,8 @@ const AuthProvider = ({children}) => {
     const saveUser=async user=>{
         const currentUser={
             email:user?.email,
-            phoneNumber: user?.phoneNumber,
+            image:user?.photoURL,
+            name:user?.displayName,
         role:"student",
         status:'pending'
         }

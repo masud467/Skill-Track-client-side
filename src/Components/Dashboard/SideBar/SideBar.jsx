@@ -1,20 +1,21 @@
 import { useState } from "react";
 import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
-
 import { AiOutlineBars } from "react-icons/ai";
 import { BsGraphUp } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { Link } from "react-router-dom";
-
-import { SiGoogleclassroom } from "react-icons/si";
-import { MdLibraryAdd } from "react-icons/md";
 import NavItems from "./NavLink/NavItems";
+import TeacherNavItems from "./NavLink/TeacherNavItems";
+import useRole from "../../../hooks/useRole";
+import AdminNavItems from "./NavLink/AdminNavItems";
+import StudentNavItems from "./NavLink/StudentNavItems";
 
 const SideBar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
+  const[role,isLoading]=useRole()
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -73,6 +74,7 @@ const SideBar = () => {
 
             {/*  Menu Items */}
             <nav>
+              {/* common item */}
               {/* Statistics */}
               <NavItems
                 label="Statistics"
@@ -81,24 +83,15 @@ const SideBar = () => {
               >
                 {" "}
               </NavItems>
+               {/* teacher item */}
+               {role==='student'&& <StudentNavItems></StudentNavItems>}
+               {role==='teacher'&& <TeacherNavItems></TeacherNavItems>}
+        
+               {role==='admin'&& <AdminNavItems></AdminNavItems>}
 
-              {/* Add Room */}
-              <NavItems
-                label="Add Class"
-                address="add-class"
-                icon={MdLibraryAdd}
-              >
-                {" "}
-              </NavItems>
+              
 
-              {/* My Listing */}
-              <NavItems
-                label="My Classes"
-                address="my-classes"
-                icon={SiGoogleclassroom}
-              >
-                {" "}
-              </NavItems>
+
             </nav>
           </div>
         </div>
