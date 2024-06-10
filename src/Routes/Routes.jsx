@@ -14,6 +14,7 @@ import Profile from "../Pages/Dashboard/Public/Profile";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import TeacherRoute from "./TeacherRoute";
 
 export const router = createBrowserRouter([
     {
@@ -60,15 +61,17 @@ export const router = createBrowserRouter([
         // teacher 
         {
           path:'add-class',
-          element:<PrivateRoute><AddClass></AddClass></PrivateRoute>
+          element:<PrivateRoute>
+            <TeacherRoute><AddClass></AddClass></TeacherRoute>
+          </PrivateRoute>
         },
         {
           path:'my-classes',
-          element:<PrivateRoute><MyClass></MyClass></PrivateRoute>
+          element:<PrivateRoute><TeacherRoute><MyClass></MyClass></TeacherRoute></PrivateRoute>
         },
         {
           path:'update/:id',
-          element:<PrivateRoute><UpdateClass></UpdateClass></PrivateRoute>
+          element:<PrivateRoute><TeacherRoute><UpdateClass></UpdateClass></TeacherRoute></PrivateRoute>
         },
        
         // admin
