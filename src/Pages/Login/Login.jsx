@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
@@ -8,7 +8,9 @@ import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
     const { signIn,loading,signInWithGoogle}=useAuth()
-    const navigate =useNavigate()
+    const navigate = useNavigate()
+  const location = useLocation()
+  const from = location?.state || '/'
     const {
         register,
         handleSubmit,
@@ -30,7 +32,7 @@ const Login = () => {
                     const res= await signIn(data.email,data.password)
                     console.log(res)
                     
-                    navigate('/')
+                    navigate(from)
                     toast.success('SignUp success.')
                 // }
                 // catch(err){

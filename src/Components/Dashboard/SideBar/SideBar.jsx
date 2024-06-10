@@ -21,6 +21,7 @@ const SideBar = () => {
   const handleToggle = () => {
     setActive(!isActive);
   };
+  // if(isLoading) return <Loading></Loading>
   return (
     <>
       {/* Small Screen Navbar */}

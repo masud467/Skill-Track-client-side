@@ -12,6 +12,7 @@ import UpdateClass from "../Pages/Dashboard/Teacher/UpdateClass";
 import Teaching from "../Pages/Teaching/Teaching";
 import Profile from "../Pages/Dashboard/Public/Profile";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -44,7 +45,7 @@ export const router = createBrowserRouter([
     // dashboard routes
     {
       path:'/dashboard',
-      element:<DashboardLayout></DashboardLayout>,
+      element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
       children:[
         // common
         {
@@ -58,21 +59,21 @@ export const router = createBrowserRouter([
         // teacher 
         {
           path:'add-class',
-          element:<AddClass></AddClass>
+          element:<PrivateRoute><AddClass></AddClass></PrivateRoute>
         },
         {
           path:'my-classes',
-          element:<MyClass></MyClass>
+          element:<PrivateRoute><MyClass></MyClass></PrivateRoute>
         },
         {
           path:'update/:id',
-          element:<UpdateClass></UpdateClass>
+          element:<PrivateRoute><UpdateClass></UpdateClass></PrivateRoute>
         },
        
         // admin
         {
           path:'all-users',
-          element:<AllUsers></AllUsers>
+          element:<PrivateRoute><AllUsers></AllUsers></PrivateRoute>
         }
 
       ]
