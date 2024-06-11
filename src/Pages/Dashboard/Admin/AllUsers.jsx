@@ -1,15 +1,16 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import useAuth from "../../../hooks/useAuth";
-import axios from "axios";
+import { useQuery,  } from "@tanstack/react-query";
+// import useAuth from "../../../hooks/useAuth";
+// import axios from "axios";
 import Loading from "../../../Components/Shared/Loading/Loading";
 import UserDataRow from "../../../Components/TableRow/UserDataRow";
 import { Helmet } from "react-helmet";
+import { axiosSecure } from "../../../hooks/useAxiosSecure";
 
 
 const AllUsers = () => {
 
-    const { user } = useAuth();
-    const queryClient= useQueryClient()
+    // const { user } = useAuth();
+    // const queryClient= useQueryClient()
     // fetch classes data with tansTack query
     const {
       data:users=[],
@@ -20,7 +21,7 @@ const AllUsers = () => {
       queryKey: ["users"],
       queryFn: async () => {
           
-        const { data } = await axios.get('http://localhost:6003/users');
+        const { data } = await axiosSecure.get('/users');
       
         return data;
       },
