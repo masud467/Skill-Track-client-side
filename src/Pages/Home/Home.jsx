@@ -3,26 +3,29 @@ import AsTeacher from "../../Components/Home/AsTeacher";
 import Banner from "../../Components/Home/Banner";
 import Contact from "../../Components/Home/Contact";
 import Faq from "../../Components/Home/Faq";
+import PopularCourses from "../../Components/Home/PopularCourses";
+import Reviews from "../../Components/Home/Reviews";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
       <Collaborators></Collaborators>
-      {/* TODO: some under sections */}
+  
       {/* 1.Create a section to Highlight a few classes or courses that are
 currently popular or recommended. Based on highest enrollment or
 highest review. (use slider highly recommended)
  */}
+ <PopularCourses></PopularCourses>
 
- {/* 2.Creating a feedback section */}
+ {/* testimonial */}
+ <Reviews></Reviews>
  {/* 3.Create a section to show the total users use this website, total
 classes,Total student enrollment in your website */}
 
-{/* 4.Create a section for teachers to join your website as a teacher */}
+{/* section for teachers to join my website as a teacher */}
 <AsTeacher></AsTeacher>
-{/* 5.Added at least 2(two) extra sections on the home page relevant to the
-website. */}
+{/*  2 extra sections  */}
 <Faq></Faq>
 <Contact></Contact>
     </div>
