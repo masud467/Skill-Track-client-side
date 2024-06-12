@@ -13,10 +13,10 @@ import {
 } from '@headlessui/react'
 import { BsCheckLg } from 'react-icons/bs'
 import { AiOutlineDown } from 'react-icons/ai'
-const roles = ['student', 'teacher', 'admin']
+const roles = ['admin']
 
 
-const UpdateRoleModal = ({ setIsOpen, isOpen, modalHandle, user }) => {
+const UpdateRoleModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
     const [selected, setSelected] = useState(user.role)
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -112,7 +112,7 @@ const UpdateRoleModal = ({ setIsOpen, isOpen, modalHandle, user }) => {
                     <button
                       type='button'
                       className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'
-                      onClick={() => modalHandle(selected)}
+                      onClick={() => modalHandler(selected)}
                     >
                       Update
                     </button>
@@ -136,7 +136,7 @@ const UpdateRoleModal = ({ setIsOpen, isOpen, modalHandle, user }) => {
 
 UpdateRoleModal.propTypes = {
     user: PropTypes.object,
-    modalHandle: PropTypes.func,
+    modalHandler: PropTypes.func,
     setIsOpen: PropTypes.func,
     isOpen: PropTypes.bool,
   }

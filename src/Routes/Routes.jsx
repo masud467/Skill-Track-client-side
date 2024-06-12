@@ -15,6 +15,8 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import TeacherRoute from "./TeacherRoute";
+import TeacherRequest from "../Pages/Dashboard/Admin/TeacherRequest";
+import AllClass from "../Pages/Dashboard/Admin/AllClass";
 
 export const router = createBrowserRouter([
     {
@@ -31,7 +33,7 @@ export const router = createBrowserRouter([
         },
         {
           path:'/instructor',
-          element:<Teaching></Teaching>
+          element:<PrivateRoute><Teaching></Teaching></PrivateRoute>
         }
       ]
       
@@ -74,11 +76,28 @@ export const router = createBrowserRouter([
           element:<PrivateRoute><TeacherRoute><UpdateClass></UpdateClass></TeacherRoute></PrivateRoute>
         },
        
+       
         // admin
         {
           path:'all-users',
           element:<PrivateRoute>
             <AdminRoute><AllUsers></AllUsers></AdminRoute>
+          </PrivateRoute>
+        },
+        {
+          path:'teacher-request',
+          element:<PrivateRoute>
+            <AdminRoute>
+              <TeacherRequest></TeacherRequest>
+            </AdminRoute>
+          </PrivateRoute>
+        },
+        {
+          path:'all-class',
+          element:<PrivateRoute>
+            <AdminRoute>
+              <AllClass></AllClass>
+            </AdminRoute>
           </PrivateRoute>
         }
 

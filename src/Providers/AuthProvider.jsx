@@ -58,6 +58,9 @@ const AuthProvider = ({ children }) => {
   };
 
   // save user in mongoDb
+
+  
+
   const saveUser = async (user) => {
     const currentUser = {
       email: user?.email,
@@ -65,6 +68,7 @@ const AuthProvider = ({ children }) => {
       name: user?.displayName,
       role: "student",
       status: "pending",
+     
     };
     const { data } = await axios.put("http://localhost:6003/user", currentUser);
     return data;
@@ -84,7 +88,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       return unsubscribe();
     };
-  }, []);
+  }, [user]);
 
   const authInfo = {
     createUser,

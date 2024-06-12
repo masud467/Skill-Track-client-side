@@ -1,9 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
+// import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Loading from "../../../Components/Shared/Loading/Loading";
+import { axiosSecure } from "../../../hooks/useAxiosSecure";
 
 
 
@@ -21,7 +22,7 @@ const MyClass = () => {
     queryKey: ["my-classes", user?.email],
     queryFn: async () => {
         
-      const { data } = await axios.get(`http://localhost:6003/my-classes/${user?.email}`);
+      const { data } = await axiosSecure.get(`/my-classes/${user?.email}`);
     console.log('api res',data)
       return data;
     },
@@ -32,7 +33,7 @@ const MyClass = () => {
 
   const deleteMutation= useMutation({
     mutationFn:async(id)=>{
-      await axios.delete(`http://localhost:6003/my-classes/${id}`)
+      await axiosSecure.delete(`/my-classes/${id}`)
     },
     onSuccess:()=>{
       queryClient.invalidateQueries(['my-classes',user?.email])

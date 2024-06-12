@@ -18,7 +18,7 @@ const AdminNavItems = () => {
                 {" "}
               </NavItems>
          <NavItems
-                icon={SiGoogleclassroom} label='All Classes' address='all-classes'
+                icon={SiGoogleclassroom} label='All Classes' address='all-class'
               >
                 {" "}
               </NavItems>

@@ -15,7 +15,7 @@ import StudentNavItems from "./NavLink/StudentNavItems";
 const SideBar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
-  const[role,isLoading]=useRole()
+  const[role]=useRole()
 
   // Sidebar Responsive Handler
   const handleToggle = () => {

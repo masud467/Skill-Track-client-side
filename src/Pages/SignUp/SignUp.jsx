@@ -18,17 +18,20 @@ const SignUp = () => {
         formState: { errors },
       } = useForm()
       const onSubmit = async(data) => {
+        setLoading(true)
         console.log(data)
         const formData = new FormData();
-        formData.append('image', data.photo[0]);
-        console.log(formData)
-        try{    
+        formData.append('image', data.photo[0]); 
+        
+        // console.log(formData)
+        try{   
+         
                     // 1.upload image and get image url from imgBB
                     const result= await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,
                     formData,{
-                        headers:{
-                            " content-type":"multipart/form-data"
-                        }
+                        // headers:{
+                        //     " content-type":"multipart/form-data"
+                        // }
                     }
                     )
                     console.log(result.data.data.display_url)
@@ -38,10 +41,17 @@ const SignUp = () => {
                     console.log(res)
                     // update profile
                     await userProfileUpdate(data.name,imageUrl)
-                    const userPhone = {
-                      phoneNumber: data.phoneNumber
-                    };
-                    await axios.put('http://localhost:6003/user', userPhone);
+                    // const userPhone = {
+                    //   phoneNumber: data.phoneNumber
+                    // };
+                    await axios.put('http://localhost:6003/user', {
+                      email: data.email,
+                      name: data.name,
+                      image: imageUrl,
+                      role: "student",
+                      status: "pending",
+                      
+                    });
                     navigate('/')
                     toast.success('SignUp success.')
                  }
@@ -57,7 +67,13 @@ const SignUp = () => {
   const handleGoogleSignIn = async () => {
     setLoading(true)
     try {
-      await signInWithGoogle()
+      await signInWithGoogle();
+      // await axios.put('http://localhost:6003/user', {
+      //   email: user.email,
+      //   name: user.displayName,
+      //   image: user.photoURL,
+      //   role: "student",
+      //   status: "pending",
 
       navigate('/')
       toast.success('Signup Successful')

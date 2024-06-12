@@ -7,44 +7,108 @@ import { useForm } from "react-hook-form";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+import useRole from "../../hooks/useRole";
 
 
 const Teaching = () => {
   
     const{user}= useAuth()
+    const[role]=useRole()
     const { register, handleSubmit,reset } = useForm();
+   
     // console.log(user)
-    const onSubmit = async(data) => {
-        console.log(data);
-        try{
-            const res = await axios.post('http://localhost:6003/teachers',data)
-            console.log(res.data)
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Submitted!",
-                text:'Your request has been submitted for review.',
-                showConfirmButton: false,
-                timer: 1500
-              });
-            reset();
-        }catch(err){
-            console.log('error saving teacher',err)
-            Swal.fire({
-                position: "top-end",
-                icon: "error",
-                title:'Error!',
-                text: "There was an error submitting your request.Please try again.",
-                showConfirmButton: false,
-                timer: 1500
-              });
-        }
+    // const onSubmit = async(data) => {
+    //     console.log(data);
+    //     try{
+
+    //       const currentUser = {
+    //         ...data,
+    //         email: user?.email,
+    //         role: "student",
+    //         status:"Requested"
+    //     };
+    //         const res = await axios.put('http://localhost:6003/user',currentUser)
+    //         console.log(res.data)
+    //         Swal.fire({
+    //             position: "top-end",
+    //             icon: "success",
+    //             title: "Submitted!",
+    //             text:'Your request has been submitted for review.',
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //           });
+    //         reset();
+    //     }catch(err){
+    //         console.log('error saving teacher',err)
+    //         Swal.fire({
+    //             position: "top-end",
+    //             icon: "error",
+    //             title:'Error!',
+    //             text: "There was an error submitting your request.Please try again.",
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //           });
+    //     }
         
         
         
     
-        // console.log(res.data)
-    }
+    //     // console.log(res.data)
+    // }
+
+    useEffect(() => {
+      // Check if the user's role is not 'student'
+      if (user && role !== "student") {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Access Denied!",
+          text: "Only students can request to become an instructor.",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          // Redirect to the home page or another relevant page
+          
+        });
+      }
+    }, [user,role]);
+  
+    const onSubmit = async (data) => {
+      console.log(data);
+      try {
+        const currentUser = {
+          ...data,
+          email: user?.email,
+          image:user?.photoURL,
+          name:user?.displayName,
+          role: "student",
+          status: "Requested",
+        };
+        const res = await axios.put('http://localhost:6003/user', currentUser);
+        console.log(res.data);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Submitted!",
+          text: 'Your request has been submitted for review.',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        reset();
+      } catch (err) {
+        console.log('error saving teacher', err);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: 'Error!',
+          text: "There was an error submitting your request. Please try again.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    };
+  
     
     return (
         <div className="pt-20">
