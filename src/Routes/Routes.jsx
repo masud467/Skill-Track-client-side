@@ -19,6 +19,8 @@ import TeacherRequest from "../Pages/Dashboard/Admin/TeacherRequest";
 import AllClass from "../Pages/Dashboard/Admin/AllClass";
 import Details from "../Pages/Dashboard/Admin/Details";
 import DetailsClasses from "../Pages/AllClasses/DetailsClasses";
+import MyEnrollClass from "../Pages/Dashboard/Student/MyEnrollClass";
+import Payment from "../Pages/Dashboard/Student/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -110,9 +112,18 @@ export const router = createBrowserRouter([
           path:'details/:id',
           element:<PrivateRoute>
             <AdminRoute>
-              <Details></Details>
+              <Details></Details>c
             </AdminRoute>
           </PrivateRoute>
+        },
+        // student 
+        {
+          path:'my-enroll-class',
+          element:<MyEnrollClass></MyEnrollClass>
+        }, 
+        {
+          path:'payment',
+          element:<Payment></Payment>
         }
 
       ]

@@ -1,6 +1,7 @@
 import Collaborators from "../../Components/Collaborators/Collaborators";
 import AsTeacher from "../../Components/Home/AsTeacher";
 import Banner from "../../Components/Home/Banner";
+import Faq from "../../Components/Home/Faq";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ classes,Total student enrollment in your website */}
 <AsTeacher></AsTeacher>
 {/* 5.Added at least 2(two) extra sections on the home page relevant to the
 website. */}
+<Faq></Faq>
     </div>
   );
 };

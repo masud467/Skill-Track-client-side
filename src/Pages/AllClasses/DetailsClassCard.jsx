@@ -1,20 +1,21 @@
 
 import PropTypes from "prop-types";
-const DetailsClassCard = ({item}) => {
+import { Link } from "react-router-dom";
+const DetailsClassCard = ({items}) => {
     return (
         <div>
            <div className="card w-full bg-base-100 shadow-xl">
-  <figure><img className=" w-full " src={item?.image} alt="Shoes" /></figure>
+  <figure><img className=" w-full " src={items?.image} alt="Shoes" /></figure>
   <div className="card-body">
-    <h2 className="card-title">{item?.title}</h2>
-    <p><span className="font-medium">Instructor:</span> {item?.teacher?.name}</p>
-    <p><span className="font-medium">Instructor Phone Number:</span> {item?.phone}</p>
-    <p><span className="font-medium">Category:</span> {item?.category}</p>
-    <p><span className="font-medium">Price:</span>  ${item?.price}</p>
-    <p> <span className="font-medium">Description:</span> {item?.description}</p>
+    <h2 className="card-title">{items?.title}</h2>
+    <p><span className="font-medium">Instructor:</span> {items?.teacher?.name}</p>
+    <p><span className="font-medium">Instructor Phone Number:</span> {items?.phone}</p>
+    <p><span className="font-medium">Category:</span> {items?.category}</p>
+    <p><span className="font-medium">Price:</span>  ${items?.price}</p>
+    <p> <span className="font-medium">Description:</span> {items?.description}</p>
     
     <div className="">
-      <button className="btn btn-primary w-full">Pay</button>
+      <Link to='/dashboard/payment'><button className="btn btn-primary w-full">Pay</button></Link>
     </div>
   </div>
 </div>
@@ -22,7 +23,7 @@ const DetailsClassCard = ({item}) => {
     );
 };
 DetailsClassCard.propTypes = {
-    item: PropTypes.object,
+    items: PropTypes.object,
     refetch: PropTypes.func,
   };
 export default DetailsClassCard;

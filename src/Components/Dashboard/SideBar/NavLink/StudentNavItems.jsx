@@ -1,4 +1,5 @@
 
+import {  MdPayments } from "react-icons/md";
 import NavItems from "./NavItems";
 
 import { RiAdminLine } from "react-icons/ri";
@@ -12,6 +13,13 @@ const StudentNavItems = () => {
                 icon={SiGoogleclassroom}
                 label='My Enroll Class'
                 address='my-enroll-class'
+              >
+                {" "}
+              </NavItems>
+             <NavItems
+                icon={MdPayments}
+                label='Payment'
+                address='payment'
               >
                 {" "}
               </NavItems>

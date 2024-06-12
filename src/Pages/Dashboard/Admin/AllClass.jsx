@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { axiosSecure } from "../../../hooks/useAxiosSecure";
+// import { axiosSecure } from "../../../hooks/useAxiosSecure";
 import Loading from "../../../Components/Shared/Loading/Loading";
 import { Helmet } from "react-helmet";
 import AllClassDataRow from "../../../Components/TableRow/AllClassDataRow";
+import { axiosPublic } from "../../../hooks/useAxiosPublic";
 
 
 const AllClass = () => {
@@ -12,10 +13,10 @@ const AllClass = () => {
         refetch
       
       } = useQuery({
-        queryKey: ["AllClass"],
+        queryKey: ["allClass"],
         queryFn: async () => {
             
-          const { data } = await axiosSecure.get('/AllClass');
+          const { data } = await axiosPublic.get('/allClass');
           // return data.filter(user => user.status === 'Requested');
         //   return data.filter(user => ['requested', 'accepted', 'rejected'].includes(user.status));
         
