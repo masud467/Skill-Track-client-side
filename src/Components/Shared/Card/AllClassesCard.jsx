@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const AllClassesCard = ({item}) => {
     return (
@@ -12,7 +13,7 @@ const AllClassesCard = ({item}) => {
     <p> <span className="font-medium">Description:</span> {item?.description}</p>
     <p> <span className="font-medium">Total enrolment:</span></p>
     <div className="">
-      <button className="btn btn-primary w-full">Enroll</button>
+     <Link to={`/details-class/${item._id}`}> <button className="btn btn-primary w-full">Enroll</button></Link>
     </div>
   </div>
 </div>
