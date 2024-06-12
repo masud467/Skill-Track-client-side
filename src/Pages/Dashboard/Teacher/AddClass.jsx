@@ -11,6 +11,7 @@ import { SiGoogleclassroom } from "react-icons/si";
 // import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { axiosSecure } from "../../../hooks/useAxiosSecure";
 
 
 const image_hosting_key=import.meta.env.VITE_IMGBB_API_KEY
@@ -69,7 +70,7 @@ const AddClass = () => {
       }
       console.log(classData)
       // await mutateAsync(classData)
-      const classRes= await axios.post('http://localhost:6003/class',classData)
+      const classRes= await axiosSecure.post('http://localhost:6003/class',classData)
       console.log(classRes.data)
       if(classRes.data.insertedId){
         reset()

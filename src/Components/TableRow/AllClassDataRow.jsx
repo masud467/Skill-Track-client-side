@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import PropTypes from "prop-types";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 
 const AllClassDataRow = ({ classItem, refetch }) => {
@@ -46,7 +47,8 @@ const AllClassDataRow = ({ classItem, refetch }) => {
       };
     
       const isDisabled = classItem?.status === "accepted" || classItem?.status === "rejected";
-    
+      const isSeeProgressDisabled = classItem?.status !== "accepted";
+
       return (
         <tr>
           <td>
@@ -120,10 +122,11 @@ const AllClassDataRow = ({ classItem, refetch }) => {
             </button>
           </td>
           <td>
+          <Link to={`/dashboard/details/${classItem._id}`}>
           <button 
              
               className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-red-900 leading-tight'
-             
+              disabled={isSeeProgressDisabled}
             >
               <span
                 aria-hidden='true'
@@ -131,6 +134,7 @@ const AllClassDataRow = ({ classItem, refetch }) => {
               ></span>
               <span className='relative'>See progress</span>
             </button>
+          </Link>
           </td>
         </tr>
       );
