@@ -10,7 +10,7 @@ const useRole = () => {
         queryKey:['role',user?.email],
         enabled: !loading && !!user?.email,
         queryFn:async()=>{
-            const {data} =await axios(`http://localhost:6003/user/${user?.email}`)
+            const {data} =await axios(`https://skill-track-for-server.vercel.app/user/${user?.email}`)
             return data.role
         }
     })

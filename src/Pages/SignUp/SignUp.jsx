@@ -44,7 +44,7 @@ const SignUp = () => {
                     // const userPhone = {
                     //   phoneNumber: data.phoneNumber
                     // };
-                    await axios.put('http://localhost:6003/user', {
+                    await axios.put('https://skill-track-for-server.vercel.app/user', {
                       email: data.email,
                       name: data.name,
                       image: imageUrl,
@@ -68,7 +68,7 @@ const SignUp = () => {
     setLoading(true)
     try {
       await signInWithGoogle();
-      // await axios.put('http://localhost:6003/user', {
+      // await axios.put('https://skill-track-for-server.vercel.app/user', {
       //   email: user.email,
       //   name: user.displayName,
       //   image: user.photoURL,

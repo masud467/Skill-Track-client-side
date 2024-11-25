@@ -70,7 +70,7 @@ const AuthProvider = ({ children }) => {
       status: "pending",
      
     };
-    const { data } = await axios.put("http://localhost:6003/user", currentUser);
+    const { data } = await axios.put("https://skill-track-for-server.vercel.app/user", currentUser);
     return data;
   };
 

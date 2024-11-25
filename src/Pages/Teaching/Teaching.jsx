@@ -28,7 +28,7 @@ const Teaching = () => {
     //         role: "student",
     //         status:"Requested"
     //     };
-    //         const res = await axios.put('http://localhost:6003/user',currentUser)
+    //         const res = await axios.put('https://skill-track-for-server.vercel.app/user',currentUser)
     //         console.log(res.data)
     //         Swal.fire({
     //             position: "top-end",
@@ -85,7 +85,7 @@ const Teaching = () => {
           role: "student",
           status: "Requested",
         };
-        const res = await axios.put('http://localhost:6003/user', currentUser);
+        const res = await axios.put('https://skill-track-for-server.vercel.app/user', currentUser);
         console.log(res.data);
         Swal.fire({
           position: "top-end",

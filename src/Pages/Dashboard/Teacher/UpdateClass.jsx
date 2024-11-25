@@ -27,7 +27,7 @@ const UpdateClass = () => {
 
 // // const {mutateAsync} = useMutation({
 // //   mutationFn:async classData=>{
-// //     const {data}= await axios.post('http://localhost:6003/class',classData)
+// //     const {data}= await axios.post('https://skill-track-for-server.vercel.app/class',classData)
 // //     return data
 // //   },
 // //   onSuccess:()=>{
@@ -68,7 +68,7 @@ const UpdateClass = () => {
 //       }
 //       console.log(classData)
 //       // await mutateAsync(classData)
-//       const classRes= await axios.post('http://localhost:6003/class',classData)
+//       const classRes= await axios.post('https://skill-track-for-server.vercel.app/class',classData)
 //       console.log(classRes.data)
 //       if(classRes.data.insertedId){
 //         reset()

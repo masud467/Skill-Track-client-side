@@ -1,10 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-// import axios from "axios";
-import useAuth from "../../../hooks/useAuth";
+
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Loading from "../../../Components/Shared/Loading/Loading";
+
+
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
 
 
 
@@ -88,20 +90,20 @@ const MyClass = () => {
             <img className="h-64" src={item?.image} alt={item.title} />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Course Title: {item.title}</h2>
-            <p><span className="font-medium">Price:</span> ${item.price}</p>
+            <h2 className="card-title">Course Title: {item?.title}</h2>
+            <p><span className="font-medium">Price:</span> ${item?.price}</p>
             
-            <p><span className="font-medium">Instructor:</span> {item.teacher.name}</p>
-            <p><span className="font-medium">Instructor email:</span>  {item.teacher.email}</p>
-            <p><span className="font-medium"> Description:</span> {item.description}</p>
+            <p><span className="font-medium">Instructor:</span> {item?.teacher.name}</p>
+            <p><span className="font-medium">Instructor email:</span>  {item?.teacher.email}</p>
+            <p><span className="font-medium"> Description:</span> {item?.description}</p>
           
-            <p><span className="font-medium">Status:</span> {item.status}</p>
+            <p><span className="font-medium">Status:</span> {item?.status}</p>
            
            
             <div className="card-actions justify-between">
               <Link to={`/dashboard/update/${item._id}`}><button  className="btn btn-primary">Update</button></Link>
               <button onClick={()=>handleDelete(item._id)}  className="btn btn-primary">Delete</button>
-              <button className="btn btn-primary">See Details</button>
+            <Link to='/dashboard/my-classes-details'><button className="btn btn-primary" disabled={item?.status !== 'accepted'}>See Details</button></Link>
             </div>
           </div>
         </div>
