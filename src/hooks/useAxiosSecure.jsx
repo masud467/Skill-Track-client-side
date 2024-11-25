@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export const axiosSecure = axios.create({
-    baseURL: 'http://localhost:6003',
+    baseURL: 'https://skill-track-for-server.vercel.app',
     withCredentials: true,
   })
 

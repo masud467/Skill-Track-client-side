@@ -9,7 +9,7 @@
 //         role:"student",
 //         status:'Requested'
 //         }
-//         const {data} =await axios.put('http://localhost:6003/user',currentUser)
+//         const {data} =await axios.put('https://skill-track-for-server.vercel.app/user',currentUser)
 //         console.log(data)
 //         if(data.modifiedCount>0){
 //           toast.success('success! Your request to become a teacher has been submitted successfully. Please wait for admin approval.')
