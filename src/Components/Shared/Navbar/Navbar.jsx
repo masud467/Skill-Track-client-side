@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
+// import { AiOutlineMenu } from "react-icons/ai";
 import avatarImg from "../../../assets/images/placeholder.jpg";
 
 const Navbar = () => {
@@ -10,17 +10,17 @@ const Navbar = () => {
 
   const navItems = (
     <>
-      <NavLink to="/">
+      <NavLink to="/" className={({ isActive }) => [isActive ? "text-green-500 underline underline-offset-4" : "text-black"]}>
         <li>
           <a>Home</a>
         </li>
       </NavLink>
-      <NavLink to="/all-classes">
+      <NavLink to="/all-classes" className={({ isActive }) => [isActive ? "text-green-500 underline underline-offset-4" : "text-black"]}>
         <li>
           <a>All Classes</a>
         </li>
       </NavLink>
-      <NavLink to="/instructor">
+      <NavLink to="/instructor" className={({ isActive }) => [isActive ? "text-green-500 underline underline-offset-4" : "text-black"]}>
         <li>
           <a>Teach on SkillTrack</a>
         </li>
@@ -59,30 +59,30 @@ const Navbar = () => {
             <img className="w-16 rounded-md mr-5" src="/logo1.png" alt="" />
           </Link>
           <Link to="/">
-            <a className=" text-4xl font-medium">SkillTrack</a>
+            <a className=" md:text-4xl text-2xl font-medium">SkillTrack</a>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navItems}</ul>
+          <ul className="menu menu-horizontal px-1 text-xl font-semibold">
+            {navItems}
+          </ul>
         </div>
-        <div className="navbar-end">
-          
-        </div>
+        <div className="navbar-end"></div>
 
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className=" p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
+          
         >
-          <AiOutlineMenu />
-          <div className="hidden md:block">
+          {/* <AiOutlineMenu className="w-7 h-7" /> */}
+          <div className="hover:cursor-pointer">
             {/* Avatar */}
             <img
               className="rounded-full"
               referrerPolicy="no-referrer"
               src={user && user.photoURL ? user?.photoURL : avatarImg}
               alt="profile"
-              height="30"
-              width="30"
+              height="50"
+              width="50"
             />
           </div>
         </div>
@@ -99,12 +99,12 @@ const Navbar = () => {
 
             {user ? (
               <>
-              <Link
-              to="/dashboard"
-              className="block  px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-            >
-            Dashboard
-            </Link>
+                <Link
+                  to="/dashboard"
+                  className="block  px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                >
+                  Dashboard
+                </Link>
                 <div
                   onClick={logOut}
                   className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"
