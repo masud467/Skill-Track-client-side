@@ -22,7 +22,7 @@ const Reviews = () => {
       .then((data) => setReviews(data));
   }, []);
   return (
-    <section className="my-16">
+    <section className="">
       <SectionTitle
         subHeading={"What Our Clients Say"}
         heading={"Testimonial"}

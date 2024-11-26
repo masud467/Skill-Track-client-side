@@ -9,25 +9,39 @@ import Reviews from "../../Components/Home/Reviews";
 const Home = () => {
   return (
     <div>
-      <Banner></Banner>
-      <Collaborators></Collaborators>
-  
+      <div className="pt-28 mb-10">
+        <Banner></Banner>
+      </div>
+      <div>
+        <Collaborators></Collaborators>
+      </div>
+
       {/* 1.Create a section to Highlight a few classes or courses that are
 currently popular or recommended. Based on highest enrollment or
 highest review. (use slider highly recommended)
  */}
- <PopularCourses></PopularCourses>
+      <div className="mt-10">
+        <PopularCourses></PopularCourses>
+      </div>
 
- {/* testimonial */}
- <Reviews></Reviews>
- {/* 3.Create a section to show the total users use this website, total
+      {/* testimonial */}
+      <div className="mt-10">
+        <Reviews></Reviews>
+      </div>
+      {/* 3.Create a section to show the total users use this website, total
 classes,Total student enrollment in your website */}
 
-{/* section for teachers to join my website as a teacher */}
-<AsTeacher></AsTeacher>
-{/*  2 extra sections  */}
-<Faq></Faq>
-<Contact></Contact>
+      {/* section for teachers to join my website as a teacher */}
+      <div className="mt-10">
+        <AsTeacher></AsTeacher>
+      </div>
+
+      <div className="mt-10">
+        <Faq></Faq>
+      </div>
+      <div className="mt-10">
+        <Contact></Contact>
+      </div>
     </div>
   );
 };

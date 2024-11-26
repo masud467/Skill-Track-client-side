@@ -1,7 +1,7 @@
 const PopularCourses = () => {
   return (
     <div>
-      <h1 className="text-center text-2xl font-medium mt-10">
+      <h1 className="text-center text-2xl font-medium">
         Show popular courses
       </h1>
     </div>

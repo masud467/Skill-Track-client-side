@@ -7,7 +7,7 @@ const AsTeacher = () => {
   
 
   return (
-    <div className="mt-10">
+    <div className="">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <img
           className="w-1/2 p-5"
