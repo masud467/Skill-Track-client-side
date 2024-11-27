@@ -10,17 +10,38 @@ const Navbar = () => {
 
   const navItems = (
     <>
-      <NavLink to="/" className={({ isActive }) => [isActive ? "text-green-500 underline underline-offset-4" : "text-black"]}>
+      <NavLink
+        to="/"
+        className={({ isActive }) => [
+          isActive
+            ? "text-green-500 underline underline-offset-4"
+            : "text-black",
+        ]}
+      >
         <li>
           <a>Home</a>
         </li>
       </NavLink>
-      <NavLink to="/all-classes" className={({ isActive }) => [isActive ? "text-green-500 underline underline-offset-4" : "text-black"]}>
+      <NavLink
+        to="/all-classes"
+        className={({ isActive }) => [
+          isActive
+            ? "text-green-500 underline underline-offset-4"
+            : "text-black",
+        ]}
+      >
         <li>
           <a>All Classes</a>
         </li>
       </NavLink>
-      <NavLink to="/instructor" className={({ isActive }) => [isActive ? "text-green-500 underline underline-offset-4" : "text-black"]}>
+      <NavLink
+        to="/instructor"
+        className={({ isActive }) => [
+          isActive
+            ? "text-green-500 underline underline-offset-4"
+            : "text-black",
+        ]}
+      >
         <li>
           <a>Teach on SkillTrack</a>
         </li>
@@ -55,12 +76,14 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <Link to="/">
-            <img className="w-16 rounded-md mr-5" src="/logo1.png" alt="" />
-          </Link>
-          <Link to="/">
-            <a className=" md:text-4xl text-2xl font-medium">SkillTrack</a>
-          </Link>
+          <div className="flex items-center justify-center lg:gap-5 gap-2">
+            <Link to="/">
+              <img className="w-16 rounded-md " src="/logo1.png" alt="" />
+            </Link>
+            <Link to="/">
+              <a className=" md:text-4xl text-2xl font-medium ">SkillTrack</a>
+            </Link>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-xl font-semibold">
@@ -69,10 +92,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end"></div>
 
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          
-        >
+        <div onClick={() => setIsOpen(!isOpen)}>
           {/* <AiOutlineMenu className="w-7 h-7" /> */}
           <div className="hover:cursor-pointer">
             {/* Avatar */}
