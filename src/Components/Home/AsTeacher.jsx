@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+// import useAuth from "../../hooks/useAuth";
+import useRole from "../../hooks/useRole";
 
 const AsTeacher = () => {
+  // const { user } = useAuth();
+  const [role] = useRole();
   return (
     <div className="">
       <div className="card lg:card-side bg-base-100 shadow-xl">
@@ -20,11 +24,20 @@ const AsTeacher = () => {
             with SkillTrack.
           </p>
           <div className="mt-4">
-            <Link to="/instructor">
-              <button className="btn btn-primary w-full text-xl font-medium">
+            {role === "student" || role === "teacher" ? (
+              <Link to="/instructor">
+                <button className="btn btn-primary w-full text-xl font-medium">
+                  Start teaching today
+                </button>
+              </Link>
+            ) : (
+              <button
+                className="btn btn-primary w-full text-xl font-medium"
+                disabled
+              >
                 Start teaching today
               </button>
-            </Link>
+            )}
           </div>
         </div>
       </div>
