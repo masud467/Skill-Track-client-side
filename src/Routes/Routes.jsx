@@ -24,117 +24,164 @@ import Payment from "../Pages/Dashboard/Student/Payment";
 import MyClassDetails from "../Pages/Dashboard/Teacher/MyClassDetails";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Root></Root>,
-      children:[
-        {
-            path:'/',
-            element:<Home></Home>
-        },
-        {
-            path:'/all-classes',
-            element:<AllClasses></AllClasses>
-        },
-        {
-          path:'/instructor',
-          element:<PrivateRoute><Teaching></Teaching></PrivateRoute>
-        },
-        {
-          path:'/details-class/:id',
-          element:<PrivateRoute><DetailsClasses></DetailsClasses></PrivateRoute>
-        }
-      ]
-      
-    },
-    {
-      path:'/login',
-      element:<Login></Login>
-    },
-    {
-      path:'/signup',
-      element:<SignUp></SignUp>
-    },
-    // dashboard routes
-    {
-      path:'/dashboard',
-      element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-      children:[
-        // common
-        {
-          index:true,
-          element:<PrivateRoute><Statistics></Statistics></PrivateRoute>
-        },
-        {
-          path:'profile',
-          element:<PrivateRoute><Profile></Profile></PrivateRoute>
-        },
-        // teacher 
-        {
-          path:'add-class',
-          element:<PrivateRoute>
-            <TeacherRoute><AddClass></AddClass></TeacherRoute>
+  {
+    path: "/",
+    element: <Root></Root>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/all-classes",
+        element: <AllClasses></AllClasses>,
+      },
+      {
+        path: "/instructor",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Teaching></Teaching>{" "}
           </PrivateRoute>
-        },
-        {
-          path:'my-classes',
-          element:<PrivateRoute><TeacherRoute><MyClass></MyClass></TeacherRoute></PrivateRoute>
-        },
-        {
-          path:'update/:id',
-          element:<PrivateRoute><TeacherRoute><UpdateClass></UpdateClass></TeacherRoute></PrivateRoute>
-        },
-        {
-          path:'my-classes-details',
-          element:<PrivateRoute>
+        ),
+      },
+      {
+        path: "/details-class/:id",
+        element: (
+          <PrivateRoute>
+            <DetailsClasses></DetailsClasses>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/signup",
+    element: <SignUp></SignUp>,
+  },
+  // dashboard routes
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      // common
+      {
+        index: true,
+        element: (
+          <PrivateRoute>
+            <Statistics></Statistics>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
+      },
+      // teacher
+
+      {
+        path: "add-class",
+        element: (
+          <PrivateRoute>
+            <TeacherRoute>
+              <AddClass></AddClass>
+            </TeacherRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-classes",
+        element: (
+          <PrivateRoute>
+            <TeacherRoute>
+              <MyClass></MyClass>
+            </TeacherRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "update/:id",
+        element: (
+          <PrivateRoute>
+            <TeacherRoute>
+              <UpdateClass></UpdateClass>
+            </TeacherRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-classes-details",
+        element: (
+          <PrivateRoute>
             <TeacherRoute>
               <MyClassDetails></MyClassDetails>
             </TeacherRoute>
           </PrivateRoute>
-        },
-       
-       
-        // admin
-        {
-          path:'all-users',
-          element:<PrivateRoute>
-            <AdminRoute><AllUsers></AllUsers></AdminRoute>
+        ),
+      },
+
+      // admin
+      {
+        path: "all-users",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AllUsers></AllUsers>
+            </AdminRoute>
           </PrivateRoute>
-        },
-        {
-          path:'teacher-request',
-          element:<PrivateRoute>
+        ),
+      },
+      {
+        path: "teacher-request",
+        element: (
+          <PrivateRoute>
             <AdminRoute>
               <TeacherRequest></TeacherRequest>
             </AdminRoute>
           </PrivateRoute>
-        },
-        {
-          path:'all-class',
-          element:<PrivateRoute>
+        ),
+      },
+      {
+        path: "all-class",
+        element: (
+          <PrivateRoute>
             <AdminRoute>
               <AllClass></AllClass>
             </AdminRoute>
           </PrivateRoute>
-        }, 
-        {
-          path:'details/:id',
-          element:<PrivateRoute>
+        ),
+      },
+      {
+        path: "details/:id",
+        element: (
+          <PrivateRoute>
             <AdminRoute>
               <Details></Details>c
             </AdminRoute>
           </PrivateRoute>
-        },
-        // student 
-        {
-          path:'my-enroll-class',
-          element:<MyEnrollClass></MyEnrollClass>
-        }, 
-        {
-          path:'payment',
-          element:<Payment></Payment>
-        }
-
-      ]
-    }
-  ]);
+        ),
+      },
+      // student
+      {
+        path: "my-enroll-class",
+        element: <MyEnrollClass></MyEnrollClass>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+    ],
+  },
+]);
