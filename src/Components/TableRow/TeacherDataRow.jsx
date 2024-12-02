@@ -21,7 +21,7 @@ const TeacherDataRow = ({ user, refetch }) => {
   const { mutateAsync: rejectMutation } = useMutation({
     mutationFn: async (status) => {
       const { data } = await axios.patch(
-        `https://skill-track-for-server.vercel.app//user/update/${user?.email}`,
+        `https://skill-track-for-server.vercel.app/user/update/${user?.email}`,
         status
       );
       return data;
