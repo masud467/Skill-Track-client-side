@@ -13,7 +13,7 @@ const UserDataRow = ({ user, refetch }) => {
   const { mutateAsync } = useMutation({
     mutationFn: async (role) => {
       const { data } = await axios.patch(
-        `http://localhost:6003/user/update/${user?.email}`,
+        `https://skill-track-for-server.vercel.app/user/update/${user?.email}`,
         role
       );
       return data;
