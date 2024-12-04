@@ -14,7 +14,6 @@ const CheckOutForm = () => {
   const element = useElements();
   // const axiosSecure =useAxiosSecure()
   const { user } = useAuth();
-
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
