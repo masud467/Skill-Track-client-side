@@ -59,7 +59,7 @@ const Contact = () => {
               <input
                 type="text"
                 placeholder="enter your name"
-                className="block w-full rounded-md shadow-sm  focus:dark:ring-violet-600 dark:bg-gray-100"
+                className="block w-full rounded-md shadow-sm  focus:dark:ring-violet-600 dark:bg-gray-100 p-2"
               />
             </label>
             <label className="block">
@@ -67,14 +67,15 @@ const Contact = () => {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="block w-full rounded-md shadow-sm  focus:dark:ring-violet-600 dark:bg-gray-100"
+                className="block w-full rounded-md shadow-sm  focus:dark:ring-violet-600 dark:bg-gray-100 p-2"
               />
             </label>
             <label className="block">
               <span className="mb-1">Message</span>
               <textarea
                 rows="3"
-                className="block w-full rounded-md  focus:dark:ring-violet-600 dark:bg-gray-100"
+                placeholder="Write your opinion"
+                className="block w-full rounded-md  focus:dark:ring-violet-600 dark:bg-gray-100 p-2"
               ></textarea>
             </label>
             <button
